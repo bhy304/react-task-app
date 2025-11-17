@@ -11,3 +11,15 @@ export interface LogItem {
   logMessage: string;
   logTimestamp: number;
 }
+
+export interface Board {
+  boardId: string;
+  boardName: string;
+  lists: List[];
+}
+
+export interface List {
+  listId: string;
+  listName: string;
+  tasks: Task[];
+}
