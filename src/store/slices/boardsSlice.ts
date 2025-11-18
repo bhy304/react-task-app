@@ -1,9 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { Board } from '../../types';
 
 type BoardState = {
   modalActive: boolean;
   boardArray: Board[];
+};
+
+type AddBoardAction = {
+  board: Board;
 };
 
 const initialState: BoardState = {
@@ -57,7 +61,13 @@ const initialState: BoardState = {
 const boardsSlice = createSlice({
   name: 'boards',
   initialState,
-  reducers: {},
+  reducers: {
+    addBoard: (state, { payload }: PayloadAction<AddBoardAction>) => {
+      state.boardArray.push(payload.board);
+    },
+  },
 });
+
+export const { addBoard } = boardsSlice.actions;
 
 export const boardsReducer = boardsSlice.reducer;

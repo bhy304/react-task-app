@@ -9,7 +9,7 @@ export interface LogItem {
   logId: string;
   logAuthor: string;
   logMessage: string;
-  logTimestamp: number;
+  logTimestamp: string;
 }
 
 export interface Board {
