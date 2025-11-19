@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { useTypedSelector } from '../../hooks/redux';
 import { FiPlusCircle } from 'react-icons/fi';
 import clsx from 'clsx';
