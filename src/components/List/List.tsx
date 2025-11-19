@@ -59,7 +59,7 @@ const List: React.FC<ListProps> = ({
           />
         </div>
       ))}
-      <ActionButton />
+      <ActionButton boardId={boardId} listId={listId} />
     </div>
   );
 };

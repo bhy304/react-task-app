@@ -14,7 +14,7 @@ const ListContainer: React.FC<ListContainerProps> = ({ boardId, lists }) => {
       {lists.map((list) => (
         <List key={list.listId} list={list} boardId={boardId} />
       ))}
-      <ActionButton />
+      <ActionButton boardId={boardId} listId={''} list />
     </div>
   );
 };
