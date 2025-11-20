@@ -1,5 +1,6 @@
 import { GrSubtract } from 'react-icons/gr';
 import { v4 as uuidv4 } from 'uuid';
+import { useDroppable } from '@dnd-kit/core';
 import ActionButton from '../ActionButton/ActionButton';
 import type { List, Task as ITask } from '../../types';
 import { useTypedDispatch } from '../../hooks/redux';
@@ -37,8 +38,23 @@ const List: React.FC<ListProps> = ({
     dispatch(setModalActive(true));
   };
 
+  const { setNodeRef, isOver } = useDroppable({
+    id: listId,
+    data: {
+      type: 'list',
+      listId,
+    },
+  });
+
   return (
-    <div className={listWrapper}>
+    <div
+      ref={setNodeRef}
+      className={listWrapper}
+      style={{
+        // backgroundColor: isOver ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+        transition: 'background-color 200ms ease-in-out',
+        borderRadius: isOver ? '8px' : '0px',
+      }}>
       <div className={header}>
         <div className={name}>{listName}</div>
         <GrSubtract
