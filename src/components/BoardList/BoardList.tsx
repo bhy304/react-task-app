@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import {
-  getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
@@ -18,7 +17,7 @@ import {
   container,
   title,
 } from './BoardList.css';
-import app from '../../firebase';
+import { auth } from '../../firebase';
 import { removeUser, setUser } from '../../store/slices/userSlice';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -35,7 +34,6 @@ const BoardList: React.FC<BoardListProps> = ({
   const { isAuth } = useAuth();
 
   const dispatch = useTypedDispatch();
-  const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
   const { boardArray } = useTypedSelector((state) => state.boards);
