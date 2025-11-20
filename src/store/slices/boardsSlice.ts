@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Board, List, Task } from '../../types';
+import type { Board, IList, Task } from '../../types';
 
 type BoardState = {
   modalActive: boolean;
@@ -16,7 +16,7 @@ type DeleteBoardAction = {
 
 type AddListAction = {
   boardId: string;
-  list: List;
+  list: IList;
 };
 
 type TaskAction = {

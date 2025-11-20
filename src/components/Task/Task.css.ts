@@ -12,7 +12,7 @@ export const container = style({
   cursor: 'pointer',
   ':hover': {
     backgroundColor: vars.color.taskHover,
-    transform: 'scale(1.03',
+    transform: 'scale(1.03)',
   },
 });
 

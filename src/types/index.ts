@@ -15,10 +15,10 @@ export interface LogItem {
 export interface Board {
   boardId: string;
   boardName: string;
-  lists: List[];
+  lists: IList[];
 }
 
-export interface List {
+export interface IList {
   listId: string;
   listName: string;
   tasks: Task[];

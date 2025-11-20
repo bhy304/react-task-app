@@ -2,7 +2,7 @@ import { GrSubtract } from 'react-icons/gr';
 import { v4 as uuidv4 } from 'uuid';
 import { useDroppable } from '@dnd-kit/core';
 import ActionButton from '../ActionButton/ActionButton';
-import type { List, Task as ITask } from '../../types';
+import type { IList, Task as ITask } from '../../types';
 import { useTypedDispatch } from '../../hooks/redux';
 import { deleteList, setModalActive } from '../../store/slices/boardsSlice';
 import Task from '../Task/Task';
@@ -11,7 +11,7 @@ import { setModalTask } from '../../store/slices/modalSlice';
 import { deleteButton, header, listWrapper, name } from './List.css';
 
 type ListProps = {
-  list: List;
+  list: IList;
   boardId: string;
 };
 

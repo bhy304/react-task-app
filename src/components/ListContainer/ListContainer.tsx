@@ -1,6 +1,6 @@
-import type { List as IList } from '../../types';
-import ActionButton from '../ActionButton/ActionButton';
 import List from '../List/List';
+import type { IList } from '../../types';
+import ActionButton from '../ActionButton/ActionButton';
 import { listsContainer } from './ListContainer.css';
 
 type ListContainerProps = {
