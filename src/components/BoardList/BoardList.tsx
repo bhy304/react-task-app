@@ -1,5 +1,10 @@
 import { useRef, useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { FiPlusCircle, FiLogIn } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
@@ -14,7 +19,8 @@ import {
   title,
 } from './BoardList.css';
 import app from '../../firebase';
-import { setUser } from '../../store/slices/userSlice';
+import { removeUser, setUser } from '../../store/slices/userSlice';
+import { useAuth } from '../../hooks/useAuth';
 
 type BoardListProps = {
   activeBoardId: string;
@@ -26,6 +32,7 @@ const BoardList: React.FC<BoardListProps> = ({
   setActiveBoardId,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { isAuth } = useAuth();
 
   const dispatch = useTypedDispatch();
   const auth = getAuth(app);
@@ -47,6 +54,15 @@ const BoardList: React.FC<BoardListProps> = ({
           id: userCredential.user.uid,
         })
       );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      dispatch(removeUser());
     } catch (error) {
       console.error(error);
     }
@@ -81,8 +97,11 @@ const BoardList: React.FC<BoardListProps> = ({
         ) : (
           <FiPlusCircle className={iconButton} onClick={handleClick} />
         )}
-        <GoSignOut className={iconButton} />
-        <FiLogIn className={iconButton} onClick={handleLogin} />
+        {isAuth ? (
+          <GoSignOut className={iconButton} onClick={handleSignOut} />
+        ) : (
+          <FiLogIn className={iconButton} onClick={handleLogin} />
+        )}
       </div>
     </div>
   );
