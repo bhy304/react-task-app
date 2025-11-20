@@ -1,9 +1,5 @@
 import { useRef, useState } from 'react';
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { FiPlusCircle, FiLogIn } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
