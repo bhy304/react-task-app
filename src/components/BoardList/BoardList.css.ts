@@ -18,7 +18,7 @@ export const title = style({
   marginRight: vars.spacing.big1,
 });
 
-export const addButton = style({
+export const iconButton = style({
   color: vars.color.brightText,
   fontSize: vars.fontSizing.T2,
   cursor: 'pointer',
